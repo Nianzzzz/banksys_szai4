@@ -28,7 +28,8 @@ select = ["E", "F", "I", "N", "W", "UP"]
 [tool.ruff.lint.per-file-ignores]
 "src/model.py" = ["N806"]
 "tests/test_model.py" = ["N806"]
-"src/pages/*.py" = ["N999"]
+"src/pages/*.py" = ["N999", "E402"]
+"src/app.py" = ["E402"]
 
 [tool.ruff.format]
 quote-style = "double"

@@ -1,5 +1,13 @@
 """Streamlit 主入口。"""
 
+import sys
+from pathlib import Path
+
+# 将项目根目录加入 sys.path，确保 src 包可被导入
+_project_root = Path(__file__).resolve().parent.parent
+if str(_project_root) not in sys.path:
+    sys.path.insert(0, str(_project_root))
+
 import streamlit as st
 
 st.set_page_config(
