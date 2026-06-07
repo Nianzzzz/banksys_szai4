@@ -51,7 +51,7 @@ with st.form("prediction_form"):
 
     for i, col_name in enumerate(feature_cols):
         with cols[i % 3]:
-            if col_name in train_df.select_dtypes(include=["object", "category"]).columns:
+            if col_name in train_df.select_dtypes(include=["object", "str", "category"]).columns:
                 # 分类特征：下拉框
                 options = sorted(train_df[col_name].dropna().unique().tolist())
                 input_values[col_name] = st.selectbox(col_name, options, key=f"input_{col_name}")
@@ -69,7 +69,7 @@ with st.form("prediction_form"):
                     key=f"input_{col_name}",
                 )
 
-    submitted = st.form_submit_button("🔮 预测", use_container_width=True)
+    submitted = st.form_submit_button("🔮 预测", width="stretch")
 
 if submitted:
     input_df = pd.DataFrame([input_values])

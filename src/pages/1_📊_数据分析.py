@@ -48,7 +48,7 @@ with st.expander("查看各列详情"):
             "缺失率(%)": list(overview["missing_pct"].values()),
         }
     )
-    st.dataframe(info_df, use_container_width=True)
+    st.dataframe(info_df, width="stretch")
 
 # 2. 目标变量分布
 st.header("目标变量分布")
@@ -59,14 +59,14 @@ fig_target = px.pie(
     title="subscribe 分布",
     color_discrete_map={"yes": "#2ecc71", "no": "#e74c3c"},
 )
-st.plotly_chart(fig_target, use_container_width=True)
+st.plotly_chart(fig_target, width="stretch")
 
 # 3. 数值特征分布
 st.header("数值特征分布")
 num_cols = get_numerical_columns(df)
 selected_num = st.selectbox("选择数值列", num_cols)
 fig_hist = px.histogram(df, x=selected_num, title=f"{selected_num} 分布", marginal="box")
-st.plotly_chart(fig_hist, use_container_width=True)
+st.plotly_chart(fig_hist, width="stretch")
 
 # 4. 分类特征分布
 st.header("分类特征分布")
@@ -79,7 +79,7 @@ fig_bar = px.bar(
     title=f"{selected_cat} 分布",
     labels={"x": selected_cat, "y": "数量"},
 )
-st.plotly_chart(fig_bar, use_container_width=True)
+st.plotly_chart(fig_bar, width="stretch")
 
 # 5. 相关性热力图
 st.header("数值特征相关性")
@@ -91,7 +91,7 @@ fig_corr = px.imshow(
     title="相关性热力图",
     aspect="auto",
 )
-st.plotly_chart(fig_corr, use_container_width=True)
+st.plotly_chart(fig_corr, width="stretch")
 
 # 6. 分组转化率
 st.header("分组转化率分析")
@@ -104,4 +104,4 @@ fig_conv = px.bar(
     labels={"x": group_col, "y": "转化率"},
 )
 fig_conv.update_layout(yaxis_tickformat=".1%")
-st.plotly_chart(fig_conv, use_container_width=True)
+st.plotly_chart(fig_conv, width="stretch")

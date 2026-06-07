@@ -33,7 +33,11 @@ def get_feature_columns(df: pd.DataFrame) -> list[str]:
 
 def get_categorical_columns(df: pd.DataFrame) -> list[str]:
     """获取分类特征列名。"""
-    return [c for c in df.select_dtypes(include=["object", "category"]).columns if c != TARGET_COL]
+    return [
+        c
+        for c in df.select_dtypes(include=["object", "str", "category"]).columns
+        if c != TARGET_COL
+    ]
 
 
 def get_numerical_columns(df: pd.DataFrame) -> list[str]:
