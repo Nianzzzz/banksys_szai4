@@ -34,3 +34,6 @@ Thumbs.db
 # Coverage
 .coverage
 htmlcov/
+
+# Project standards (internal docs, not for repo)
+standards/
